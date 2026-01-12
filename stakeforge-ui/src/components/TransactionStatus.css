@@ -1,0 +1,66 @@
+.tx-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tx-status-pending {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.tx-status-success {
+  background: rgba(104, 211, 145, 0.1);
+  border: 1px solid rgba(104, 211, 145, 0.3);
+}
+
+.tx-status-error {
+  background: rgba(245, 101, 101, 0.1);
+  border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+.tx-icon {
+  font-size: 1.5rem;
+}
+
+.tx-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tx-title {
+  font-weight: 600;
+  color: white;
+}
+
+.tx-status-pending .tx-title {
+  color: #fbbf24;
+}
+
+.tx-status-success .tx-title {
+  color: #68d391;
+}
+
+.tx-status-error .tx-title {
+  color: #f56565;
+}
+
+.tx-message {
+  font-size: 0.875rem;
+  color: #a0aec0;
+}
+
+.tx-link {
+  font-size: 0.875rem;
+  color: #667eea;
+  text-decoration: none;
+  margin-top: 0.25rem;
+}
+
+.tx-link:hover {
+  text-decoration: underline;
+}
