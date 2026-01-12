@@ -1,0 +1,115 @@
+.nft-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nft-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.nft-card.selected {
+  border-color: #667eea;
+  background: linear-gradient(145deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+.nft-card.staked {
+  border-color: rgba(104, 211, 145, 0.3);
+}
+
+.nft-card.staked:hover {
+  border-color: rgba(104, 211, 145, 0.5);
+}
+
+.nft-image {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.nft-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nft-card.staked .nft-placeholder {
+  background: linear-gradient(135deg, #68d391 0%, #38a169 100%);
+}
+
+.nft-emoji {
+  font-size: 3rem;
+}
+
+.selection-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: #667eea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.nft-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nft-id {
+  font-weight: 600;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.stake-date {
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+.rewards {
+  font-size: 0.875rem;
+  color: #68d391;
+  font-weight: 600;
+}
+
+.nft-status {
+  display: flex;
+  justify-content: center;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.available {
+  background: rgba(102, 126, 234, 0.2);
+  color: #667eea;
+}
+
+.status-badge.staked {
+  background: rgba(104, 211, 145, 0.2);
+  color: #68d391;
+}
