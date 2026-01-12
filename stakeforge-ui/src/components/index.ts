@@ -5,3 +5,8 @@ export { StakeSection } from './StakeSection';
 export { Toast } from './Toast';
 export { LoadingSpinner } from './LoadingSpinner';
 export { RewardsPanel } from './RewardsPanel';
+export { Footer } from './Footer';
+export { NFTCard } from './NFTCard';
+export { Modal } from './Modal';
+export { TransactionStatus } from './TransactionStatus';
+export { Button } from './Button';
