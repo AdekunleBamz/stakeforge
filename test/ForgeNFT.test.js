@@ -11,7 +11,7 @@ describe("ForgeNFT", function () {
     [owner, addr1, addr2] = await ethers.getSigners();
     
     const ForgeNFT = await ethers.getContractFactory("ForgeNFT");
-    forgeNFT = await ForgeNFT.deploy();
+    forgeNFT = await ForgeNFT.deploy(owner.address);
     await forgeNFT.waitForDeployment();
   });
 
@@ -40,7 +40,7 @@ describe("ForgeNFT", function () {
       await forgeNFT.connect(addr1).mint({ value: mintPrice });
       
       expect(await forgeNFT.balanceOf(addr1.address)).to.equal(1);
-      expect(await forgeNFT.ownerOf(1)).to.equal(addr1.address);
+      expect(await forgeNFT.ownerOf(0)).to.equal(addr1.address);
     });
 
     it("Should fail if insufficient payment", async function () {
@@ -54,7 +54,7 @@ describe("ForgeNFT", function () {
       
       await expect(forgeNFT.connect(addr1).mint({ value: mintPrice }))
         .to.emit(forgeNFT, "Transfer")
-        .withArgs(ethers.ZeroAddress, addr1.address, 1);
+        .withArgs(ethers.ZeroAddress, addr1.address, 0);
     });
   });
 
@@ -72,13 +72,13 @@ describe("ForgeNFT", function () {
     it("Should fail if quantity is zero", async function () {
       await expect(
         forgeNFT.connect(addr1).mintBatch(0)
-      ).to.be.revertedWith("Quantity must be greater than 0");
+      ).to.be.revertedWith("Invalid quantity");
     });
 
     it("Should fail if quantity exceeds max per tx", async function () {
       await expect(
         forgeNFT.connect(addr1).mintBatch(11, { value: ethers.parseEther("0.011") })
-      ).to.be.revertedWith("Exceeds max per transaction");
+      ).to.be.revertedWith("Invalid quantity");
     });
   });
 

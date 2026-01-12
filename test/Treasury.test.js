@@ -14,7 +14,7 @@ describe("Treasury", function () {
 
     // Deploy ForgeToken
     const ForgeToken = await ethers.getContractFactory("ForgeToken");
-    forgeToken = await ForgeToken.deploy();
+    forgeToken = await ForgeToken.deploy(owner.address);
     await forgeToken.waitForDeployment();
 
     // Deploy Treasury

@@ -11,7 +11,7 @@ describe("ForgeToken", function () {
     [owner, minter, addr1] = await ethers.getSigners();
     
     const ForgeToken = await ethers.getContractFactory("ForgeToken");
-    forgeToken = await ForgeToken.deploy();
+    forgeToken = await ForgeToken.deploy(owner.address);
     await forgeToken.waitForDeployment();
   });
 
@@ -21,7 +21,7 @@ describe("ForgeToken", function () {
     });
 
     it("Should have correct name and symbol", async function () {
-      expect(await forgeToken.name()).to.equal("ForgeToken");
+      expect(await forgeToken.name()).to.equal("Forge Token");
       expect(await forgeToken.symbol()).to.equal("FORGE");
     });
 
@@ -83,7 +83,7 @@ describe("ForgeToken", function () {
       const amount = ethers.parseEther("1000");
       await expect(
         forgeToken.connect(addr1).mint(addr1.address, amount)
-      ).to.be.revertedWith("Not authorized to mint");
+      ).to.be.revertedWith("Not a minter");
     });
 
     it("Should not exceed max supply", async function () {
