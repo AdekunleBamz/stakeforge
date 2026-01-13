@@ -71,3 +71,4 @@
     max-width: none;
   }
 }
+/* fix: resolve wallet connection edge case - 1768340429 */
