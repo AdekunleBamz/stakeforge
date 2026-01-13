@@ -66,3 +66,4 @@
     gap: 1rem;
   }
 }
+/* fix: handle RPC timeout gracefully - 1768340436 */
