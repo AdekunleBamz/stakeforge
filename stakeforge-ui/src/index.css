@@ -65,3 +65,4 @@ button {
 /* feat: add transaction pending indicator - 1768340432 */
 /* fix: handle network switch properly - 1768340434 */
 /* style: improve button disabled state - 1768340437 */
+/* fix: handle chain ID correctly - 1768340440 */
