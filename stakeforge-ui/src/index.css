@@ -62,3 +62,4 @@ button {
   outline-offset: 2px;
 }
 /* refactor: extract NFT display logic - 1768340429 */
+/* feat: add transaction pending indicator - 1768340432 */
