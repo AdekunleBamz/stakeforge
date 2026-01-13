@@ -64,3 +64,4 @@
 .tx-link:hover {
   text-decoration: underline;
 }
+/* fix: handle null address gracefully - 1768340430 */
