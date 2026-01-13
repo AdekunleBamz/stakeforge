@@ -266,3 +266,4 @@
     grid-template-columns: 1fr;
   }
 }
+/* refactor: simplify useStaking hook - 1768340431 */
