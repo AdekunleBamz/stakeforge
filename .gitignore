@@ -43,7 +43,3 @@ typechain-types/
 # Private data
 functions/
 scripts/
-test-wallets.json
-*.json.bak
-*-results.json
-*-progress.json
