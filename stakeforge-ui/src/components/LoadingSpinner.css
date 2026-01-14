@@ -1,8 +1,25 @@
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 35, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  animation: fade-in var(--transition-base);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .loading-spinner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .spinner {
@@ -12,98 +29,88 @@
   justify-content: center;
 }
 
-.loading-spinner.small .spinner {
+.loading-spinner-small .spinner {
   width: 24px;
   height: 24px;
 }
 
-.loading-spinner.medium .spinner {
+.loading-spinner-medium .spinner {
   width: 48px;
   height: 48px;
 }
 
-.loading-spinner.large .spinner {
+.loading-spinner-large .spinner {
   width: 72px;
   height: 72px;
 }
 
-.spinner-ring {
+.spinner-svg {
+  width: 100%;
+  height: 100%;
+  animation: rotate 1.5s linear infinite;
+}
+
+.spinner-track {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.spinner-path {
+  stroke-linecap: round;
+  stroke-dasharray: 90, 150;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+.spinner-glow {
   position: absolute;
-  border: 3px solid transparent;
-  border-top-color: #667eea;
+  inset: -4px;
+  background: var(--gradient-primary);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  filter: blur(12px);
+  opacity: 0.3;
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.loading-spinner.small .spinner-ring {
-  width: 24px;
-  height: 24px;
-  border-width: 2px;
-}
-
-.loading-spinner.medium .spinner-ring {
-  width: 48px;
-  height: 48px;
-  border-width: 3px;
-}
-
-.loading-spinner.large .spinner-ring {
-  width: 72px;
-  height: 72px;
-  border-width: 4px;
-}
-
-.spinner-ring:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.spinner-ring:nth-child(2) {
-  animation-delay: 0.15s;
-  opacity: 0.8;
-}
-
-.spinner-ring:nth-child(3) {
-  animation-delay: 0.3s;
-  opacity: 0.6;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+@keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
 
-.loading-text {
-  color: #a0aec0;
-  font-size: 0.875rem;
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
 }
-/* refactor: optimize re-renders - 1768340439 */
-/* feat: add mint quantity selector - 1768340439 */
-/* fix: resolve token ID display - 1768340440 */
-/* feat: add copy address button - 1768340440 */
-/* feat: add total value locked - 1768340445 */
-/* fix: handle empty rewards - 1768340445 */
-/* fix: resolve count display - 1768340446 */
-/* style: improve skeleton loader - 1768340451 */
-/* refactor: extract panel logic - 1768340455 */
-/* fix: resolve action feedback - 1768340456 */
-/* fix: resolve menu overflow - 1768340457 */
-/* feat: add infinite scroll - 1768340458 */
-/* style: update action reveal - 1768340459 */
-/* refactor: extract physics engine - 1768340462 */
-/* fix: resolve service worker - 1768340467 */
-/* style: improve link previews - 1768340469 */
-/* style: update drop zone - 1768340470 */
-/* refactor: optimize file logic - 1768340470 */
-/* feat: add audio visualization - 1768340472 */
-/* feat: add recording support - 1768340472 */
-/* feat: add QR scanner - 1768340473 */
-/* refactor: extract scanner logic - 1768340473 */
-/* feat: add segmentation - 1768340477 */
-/* refactor: extract 3D logic - 1768340481 */
-/* fix: handle effect chain - 1768340482 */
-/* style: improve bloom effect - 1768340482 */
-/* feat: add screen recording - 1768340482 */
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+.loading-text {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
