@@ -1,16 +1,17 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.2s ease;
+  z-index: var(--z-modal);
+  animation: modal-fade-in 0.2s ease;
+  padding: var(--spacing-xl);
 }
 
-@keyframes fadeIn {
+@keyframes modal-fade-in {
   from {
     opacity: 0;
   }
@@ -20,23 +21,38 @@
 }
 
 .modal-content {
-  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  max-width: 500px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  animation: slideUp 0.3s ease;
+  background: linear-gradient(145deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  width: 100%;
+  max-height: calc(100vh - var(--spacing-3xl) * 2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modal-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes slideUp {
+/* Size variants */
+.modal-small {
+  max-width: 380px;
+}
+
+.modal-medium {
+  max-width: 500px;
+}
+
+.modal-large {
+  max-width: 680px;
+}
+
+@keyframes modal-slide-up {
   from {
-    transform: translateY(20px);
+    transform: translateY(24px) scale(0.96);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
@@ -45,55 +61,67 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
 }
 
 .modal-title {
   margin: 0;
-  font-size: 1.25rem;
-  color: white;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
 }
 
 .modal-close {
-  background: none;
-  border: none;
-  color: #a0aec0;
-  font-size: 1.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
 }
 
 .modal-close:hover {
-  color: white;
+  color: var(--color-text-primary);
+  background: var(--color-bg-card-hover);
+  border-color: var(--color-border-hover);
+}
+
+.modal-close:active {
+  transform: scale(0.95);
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  flex: 1;
 }
-/* feat: add loading state to mint button - 1768340429 */
-/* feat: add wallet balance display - 1768340435 */
-/* feat: add refresh button - 1768340436 */
-/* feat: add transaction receipt link - 1768340441 */
-/* refactor: extract constants - 1768340441 */
-/* refactor: extract hooks index - 1768340444 */
-/* feat: add batch operations - 1768340451 */
-/* refactor: extract menu logic - 1768340453 */
-/* style: update divider styling - 1768340455 */
-/* fix: resolve drop zone - 1768340456 */
-/* refactor: optimize drag logic - 1768340456 */
-/* style: update press feedback - 1768340460 */
-/* fix: handle scroll offset - 1768340463 */
-/* style: update notification design - 1768340468 */
-/* feat: add camera integration - 1768340473 */
-/* style: update scan overlay - 1768340473 */
-/* style: improve scan feedback - 1768340474 */
-/* fix: resolve landmark accuracy - 1768340475 */
-/* refactor: extract ML logic - 1768340475 */
-/* fix: handle body tracking - 1768340476 */
-/* style: update gesture feedback - 1768340476 */
-/* fix: handle collision detection - 1768340481 */
-/* feat: add particle system - 1768340481 */
-/* feat: add post-processing - 1768340482 */
+
+@media (max-width: 640px) {
+  .modal-backdrop {
+    padding: var(--spacing-md);
+    align-items: flex-end;
+  }
+  
+  .modal-content {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    animation: modal-slide-up-mobile 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes modal-slide-up-mobile {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
