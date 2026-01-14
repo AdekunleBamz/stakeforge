@@ -1,0 +1,135 @@
+/* Skeleton Component Styles */
+
+.skeleton {
+  background: var(--bg-tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Variants */
+.skeleton--text {
+  height: 1em;
+  border-radius: var(--radius-sm);
+  transform-origin: 0 55%;
+}
+
+.skeleton--circular {
+  border-radius: 50%;
+}
+
+.skeleton--rectangular {
+  border-radius: 0;
+}
+
+.skeleton--rounded {
+  border-radius: var(--radius-md);
+}
+
+/* Wave animation */
+.skeleton--wave::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.04),
+    transparent
+  );
+  animation: skeleton-wave 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Pulse animation */
+.skeleton--pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* No animation */
+.skeleton--none::after {
+  display: none;
+}
+
+/* Skeleton Text group */
+.skeleton-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.skeleton-text .skeleton {
+  height: 16px;
+}
+
+/* Skeleton Card */
+.skeleton-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.skeleton-card .skeleton--rectangular {
+  width: 100%;
+}
+
+.skeleton-card__content {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.skeleton-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+}
+
+/* Skeleton Avatar */
+.skeleton-avatar {
+  flex-shrink: 0;
+}
+
+/* Skeleton row utility */
+.skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* Match dark theme better */
+.skeleton {
+  --skeleton-bg: var(--bg-tertiary);
+  background: var(--skeleton-bg);
+}
+
+/* High contrast for glow sections */
+.card--glow .skeleton,
+.stats-card .skeleton {
+  background: rgba(255, 255, 255, 0.05);
+}
