@@ -1,0 +1,180 @@
+/* Radio Component Styles */
+
+.radio-group {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.radio-group--vertical {
+  flex-direction: column;
+}
+
+.radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.radio-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.radio-wrapper--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.radio__container {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+/* Radio circle */
+.radio {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+/* Hidden input */
+.radio__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  z-index: 1;
+}
+
+.radio__input:disabled {
+  cursor: not-allowed;
+}
+
+/* Circle */
+.radio__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-primary);
+  border-radius: 50%;
+  transition: var(--transition-base);
+}
+
+/* Sizes */
+.radio--small .radio__circle {
+  width: 16px;
+  height: 16px;
+}
+
+.radio--small .radio__dot {
+  width: 6px;
+  height: 6px;
+}
+
+.radio--medium .radio__circle {
+  width: 20px;
+  height: 20px;
+}
+
+.radio--medium .radio__dot {
+  width: 8px;
+  height: 8px;
+}
+
+.radio--large .radio__circle {
+  width: 24px;
+  height: 24px;
+}
+
+.radio--large .radio__dot {
+  width: 10px;
+  height: 10px;
+}
+
+/* Dot */
+.radio__dot {
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: var(--transition-fast);
+}
+
+/* Checked state */
+.radio__input:checked + .radio__circle {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.radio__input:checked + .radio__circle .radio__dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Focus state */
+.radio__input:focus-visible + .radio__circle {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.radio__input:not(:disabled):hover + .radio__circle {
+  border-color: var(--border-secondary);
+}
+
+.radio__input:not(:disabled):checked:hover + .radio__circle {
+  filter: brightness(1.1);
+}
+
+/* Labels */
+.radio__label-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 1px;
+}
+
+.radio__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.radio-wrapper--disabled .radio__label {
+  cursor: not-allowed;
+}
+
+.radio__description {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Card style radio (for selection cards) */
+.radio--card {
+  width: 100%;
+}
+
+.radio--card .radio__container {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+}
+
+.radio--card .radio__input:checked ~ .radio__container {
+  border-color: var(--primary);
+  background: rgba(88, 101, 242, 0.05);
+}
+
+.radio--card .radio__input:hover:not(:disabled) ~ .radio__container {
+  border-color: var(--border-secondary);
+}
