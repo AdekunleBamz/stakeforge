@@ -1,10 +1,23 @@
 .tx-status {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  margin-top: 1rem;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-md);
+  animation: slide-in 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tx-status-pending {
@@ -22,64 +35,114 @@
   border: 1px solid rgba(245, 101, 101, 0.3);
 }
 
-.tx-icon {
-  font-size: 1.5rem;
+.tx-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tx-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tx-icon-wrapper.pending {
+  color: var(--color-warning);
+}
+
+.tx-icon-wrapper.pending .spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.tx-icon-wrapper.success {
+  color: var(--color-success);
+}
+
+.tx-icon-wrapper.success svg {
+  animation: pop-in 0.3s ease-out;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tx-icon-wrapper.error {
+  color: var(--color-error);
 }
 
 .tx-info {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
+  flex: 1;
+  min-width: 0;
 }
 
 .tx-title {
-  font-weight: 600;
-  color: white;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
 }
 
 .tx-status-pending .tx-title {
-  color: #fbbf24;
+  color: var(--color-warning);
 }
 
 .tx-status-success .tx-title {
-  color: #68d391;
+  color: var(--color-success);
 }
 
 .tx-status-error .tx-title {
-  color: #f56565;
+  color: var(--color-error);
 }
 
 .tx-message {
-  font-size: 0.875rem;
-  color: #a0aec0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .tx-link {
-  font-size: 0.875rem;
-  color: #667eea;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
   text-decoration: none;
-  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  transition: opacity var(--transition-fast);
 }
 
 .tx-link:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
-/* fix: handle null address gracefully - 1768340430 */
-/* style: improve mobile responsiveness - 1768340430 */
-/* fix: resolve unstake button state - 1768340433 */
-/* style: update footer layout - 1768340435 */
-/* feat: add estimated rewards display - 1768340437 */
-/* style: update badge colors - 1768340446 */
-/* feat: add analytics events - 1768340450 */
-/* style: update progress bar - 1768340452 */
-/* refactor: extract scroll logic - 1768340458 */
-/* feat: add pull to refresh - 1768340458 */
-/* fix: resolve gesture conflicts - 1768340459 */
-/* feat: add double tap zoom - 1768340461 */
-/* feat: add lazy loading - 1768340465 */
-/* style: improve transition timing - 1768340466 */
-/* fix: resolve share data - 1768340469 */
-/* feat: add clipboard support - 1768340470 */
-/* fix: handle image formats - 1768340471 */
-/* feat: add pose estimation - 1768340476 */
-/* feat: add animation system - 1768340480 */
+
+.tx-dismiss {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tx-dismiss:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
+}
