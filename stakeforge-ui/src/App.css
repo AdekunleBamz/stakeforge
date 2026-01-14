@@ -6,71 +6,71 @@
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-  color: #e2e8f0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--gradient-bg);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
 }
 
 .main-content {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing-xl);
 }
 
 .connect-prompt {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: var(--spacing-3xl) var(--spacing-xl);
   max-width: 500px;
-  margin: 4rem auto;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
+  margin: var(--spacing-3xl) auto;
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
 }
 
 .connect-prompt h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .connect-prompt p {
-  color: #a0aec0;
-  margin-bottom: 1.5rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
 }
 
 .connect-btn-large {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  padding: 1rem 2.5rem;
-  border-radius: 0.75rem;
-  font-size: 1.125rem;
-  font-weight: 600;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .connect-btn-large:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .chain-info {
-  font-size: 0.875rem;
-  color: #68d391 !important;
-  margin-top: 1rem !important;
+  font-size: var(--font-size-sm);
+  color: var(--color-success) !important;
+  margin-top: var(--spacing-md) !important;
 }
 
 .footer {
   text-align: center;
-  padding: 2rem;
-  color: #4a5568;
-  font-size: 0.875rem;
+  padding: var(--spacing-xl);
+  color: var(--color-text-disabled);
+  font-size: var(--font-size-sm);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 4rem;
+  margin-top: var(--spacing-3xl);
 }
 
 /* Scrollbar styles */
@@ -92,23 +92,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(102, 126, 234, 0.7);
 }
-/* fix: correct reward calculation display - 1768340430 */
-/* refactor: optimize contract calls - 1768340434 */
-/* fix: resolve stake count mismatch - 1768340436 */
-/* style: update toast positioning - 1768340436 */
-/* fix: handle gas estimation error - 1768340442 */
-/* refactor: optimize bundle size - 1768340442 */
-/* feat: add stake all button - 1768340443 */
-/* feat: add quick actions menu - 1768340453 */
-/* style: improve sidebar layout - 1768340455 */
-/* feat: add drag and drop - 1768340455 */
-/* refactor: optimize zoom logic - 1768340461 */
-/* refactor: optimize animation loop - 1768340463 */
-/* fix: handle sync queue - 1768340467 */
-/* feat: add deep linking - 1768340469 */
-/* style: improve image loading - 1768340471 */
-/* feat: add video support - 1768340471 */
-/* feat: add gesture recognition - 1768340476 */
-/* refactor: optimize render loop - 1768340479 */
-/* fix: resolve particle pooling - 1768340481 */
-/* chore: final cleanup - 1768340482 */
