@@ -1,14 +1,15 @@
 .header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-md) var(--spacing-xl);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(12px);
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -18,17 +19,17 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .logo-icon {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
 }
 
 .logo h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -37,18 +38,34 @@
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: var(--spacing-xl);
 }
 
 .nav-link {
-  color: #a0aec0;
+  color: var(--color-text-muted);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-base);
+  position: relative;
 }
 
 .nav-link:hover {
-  color: #fff;
+  color: var(--color-text-primary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 .wallet-section {
@@ -58,20 +75,20 @@
 
 .connect-btn,
 .switch-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .connect-btn:hover,
 .switch-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-primary);
 }
 
 .connect-btn:disabled {
@@ -87,25 +104,26 @@
 .wallet-info {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: var(--spacing-sm);
+  background: var(--color-bg-card);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
 }
 
 .chain-badge {
   background: #3b82f6;
   color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
 }
 
 .address {
-  font-family: monospace;
-  color: #e2e8f0;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
 }
 
 @media (max-width: 768px) {
@@ -115,24 +133,10 @@
   
   .header-content {
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--spacing-md);
+  }
+  
+  .header {
+    padding: var(--spacing-md);
   }
 }
-/* refactor: extract formatters utility - 1768340436 */
-/* style: update link hover states - 1768340442 */
-/* fix: handle multiple wallets - 1768340444 */
-/* style: improve dark mode contrast - 1768340444 */
-/* style: improve contrast ratios - 1768340449 */
-/* fix: resolve memory leak - 1768340450 */
-/* feat: add undo functionality - 1768340452 */
-/* fix: handle filter reset - 1768340454 */
-/* fix: handle touch events - 1768340455 */
-/* refactor: extract gesture utils - 1768340460 */
-/* feat: add pan gestures - 1768340461 */
-/* style: improve fade transitions - 1768340465 */
-/* style: update placeholder shimmer - 1768340465 */
-/* feat: add share targets - 1768340469 */
-/* refactor: extract share utils - 1768340469 */
-/* refactor: extract media logic - 1768340471 */
-/* fix: handle camera access - 1768340473 */
-/* feat: add barcode support - 1768340474 */
