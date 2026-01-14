@@ -1,102 +1,146 @@
 .mint-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 .section-header h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-sm);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .section-header p {
-  color: #a0aec0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
 }
 
 .mint-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  max-width: 500px;
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-xl);
+  max-width: 480px;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.mint-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
 }
 
 .mint-preview {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 .nft-preview {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 1rem;
+  width: 180px;
+  height: 180px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
+  position: relative;
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.nft-preview::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(16px);
+  opacity: 0.5;
 }
 
 .preview-icon {
-  font-size: 4rem;
+  font-size: var(--font-size-4xl);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .preview-text {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   color: white;
 }
 
 .mint-controls {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
 }
 
 .quantity-selector {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
+  background: var(--color-bg-card);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-xl);
 }
 
 .qty-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
   border: 2px solid rgba(102, 126, 234, 0.5);
   background: transparent;
-  color: #667eea;
-  font-size: 1.5rem;
-  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .qty-btn:hover:not(:disabled) {
   background: rgba(102, 126, 234, 0.2);
-  border-color: #667eea;
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.qty-btn:active:not(:disabled) {
+  transform: scale(0.95);
 }
 
 .qty-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .quantity {
-  font-size: 2rem;
-  font-weight: 700;
-  color: white;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
   min-width: 60px;
   text-align: center;
 }
@@ -104,87 +148,122 @@
 .price-info {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
 }
 
 .price-label {
-  color: #a0aec0;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
 }
 
 .price-value {
-  font-weight: 600;
-  color: white;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
 }
 
 .mint-btn {
   width: 100%;
-  padding: 1rem;
+  padding: var(--spacing-md) var(--spacing-lg);
   border: none;
-  border-radius: 0.75rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-primary);
   color: white;
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.mint-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.mint-btn:hover:not(:disabled)::before {
+  left: 100%;
 }
 
 .mint-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.mint-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .mint-btn:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
 
 .gas-notice {
   text-align: center;
-  font-size: 0.875rem;
-  color: #68d391;
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
 }
 
 .tx-success {
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
   background: rgba(104, 211, 145, 0.1);
   border: 1px solid rgba(104, 211, 145, 0.3);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg);
   text-align: center;
-  color: #68d391;
+  color: var(--color-success);
+  animation: slide-up 0.3s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tx-success a {
-  color: #68d391;
+  color: var(--color-success);
   text-decoration: underline;
+  font-weight: var(--font-weight-medium);
 }
-/* fix: handle empty NFT state - 1768340435 */
-/* style: improve loading spinner - 1768340435 */
-/* feat: add network status indicator - 1768340438 */
-/* fix: handle zero balance edge case - 1768340438 */
-/* style: improve card shadow depth - 1768340439 */
-/* feat: add stake duration display - 1768340442 */
-/* fix: resolve reward rate format - 1768340442 */
-/* feat: add filter by status - 1768340445 */
-/* style: update tooltip design - 1768340448 */
-/* fix: handle edge transitions - 1768340452 */
-/* refactor: optimize search - 1768340454 */
-/* feat: add saved filters - 1768340454 */
-/* feat: add multi-select - 1768340456 */
-/* style: update action bar - 1768340457 */
-/* feat: add haptic feedback - 1768340459 */
-/* fix: resolve press timing - 1768340460 */
-/* fix: handle boundary constraints - 1768340461 */
-/* style: improve pan smoothness - 1768340461 */
-/* fix: handle spring tension - 1768340462 */
-/* style: update stuck state - 1768340464 */
-/* feat: add intersection observer - 1768340464 */
-/* feat: add image optimization - 1768340471 */
-/* feat: add landmark detection - 1768340475 */
-/* fix: handle depth map - 1768340478 */
-/* style: improve physics debug - 1768340481 */
-/* refactor: optimize GPU usage - 1768340481 */
+
+.tx-success a:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .mint-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .nft-preview {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .preview-icon {
+    font-size: var(--font-size-3xl);
+  }
+}
