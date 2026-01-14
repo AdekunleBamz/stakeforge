@@ -1,0 +1,160 @@
+/* Switch Component Styles */
+
+.switch-wrapper {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.switch-wrapper--label-left {
+  flex-direction: row;
+}
+
+.switch-wrapper--label-right {
+  flex-direction: row;
+}
+
+.switch-wrapper--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Switch container */
+.switch {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+/* Hidden input */
+.switch__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  z-index: 1;
+}
+
+.switch__input:disabled {
+  cursor: not-allowed;
+}
+
+/* Track */
+.switch__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+/* Sizes */
+.switch--small .switch__track {
+  width: 32px;
+  height: 18px;
+}
+
+.switch--small .switch__thumb {
+  width: 12px;
+  height: 12px;
+}
+
+.switch--medium .switch__track {
+  width: 44px;
+  height: 24px;
+}
+
+.switch--medium .switch__thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.switch--large .switch__track {
+  width: 56px;
+  height: 30px;
+}
+
+.switch--large .switch__thumb {
+  width: 24px;
+  height: 24px;
+}
+
+/* Thumb */
+.switch__thumb {
+  position: absolute;
+  left: 2px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Checked state */
+.switch__input:checked + .switch__track {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.switch--success .switch__input:checked + .switch__track {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.switch__input:checked + .switch__track .switch__thumb {
+  background: white;
+}
+
+.switch--small .switch__input:checked + .switch__track .switch__thumb {
+  transform: translateX(14px);
+}
+
+.switch--medium .switch__input:checked + .switch__track .switch__thumb {
+  transform: translateX(20px);
+}
+
+.switch--large .switch__input:checked + .switch__track .switch__thumb {
+  transform: translateX(26px);
+}
+
+/* Focus state */
+.switch__input:focus-visible + .switch__track {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.switch__input:not(:disabled):hover + .switch__track {
+  border-color: var(--border-secondary);
+}
+
+.switch__input:not(:disabled):checked:hover + .switch__track {
+  filter: brightness(1.1);
+}
+
+/* Labels */
+.switch__label-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.switch__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.switch-wrapper--disabled .switch__label {
+  cursor: not-allowed;
+}
+
+.switch__description {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
