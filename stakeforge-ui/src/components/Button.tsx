@@ -10,6 +10,7 @@ interface ButtonProps {
   loading?: boolean;
   fullWidth?: boolean;
   type?: 'button' | 'submit';
+  className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -21,16 +22,28 @@ export const Button: React.FC<ButtonProps> = ({
   loading = false,
   fullWidth = false,
   type = 'button',
+  className = '',
 }) => {
+  const classes = [
+    'btn',
+    `btn-${variant}`,
+    `btn-${size}`,
+    fullWidth ? 'btn-full' : '',
+    className,
+  ].filter(Boolean).join(' ');
+
   return (
     <button
       type={type}
-      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'btn-full' : ''}`}
+      className={classes}
       onClick={onClick}
       disabled={disabled || loading}
     >
       {loading ? (
-        <span className="btn-spinner">⏳</span>
+        <>
+          <span className="btn-spinner" aria-hidden="true" />
+          <span>Loading...</span>
+        </>
       ) : (
         children
       )}

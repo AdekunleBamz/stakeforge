@@ -2,12 +2,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   border: none;
-  border-radius: 0.75rem;
-  font-weight: 600;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn:disabled {
@@ -15,46 +37,55 @@
   cursor: not-allowed;
 }
 
+.btn:disabled::before {
+  display: none;
+}
+
 /* Sizes */
 .btn-small {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
 }
 
 .btn-medium {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
 }
 
 .btn-large {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
 }
 
 /* Variants */
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-bg-card);
   border: 2px solid rgba(102, 126, 234, 0.5);
-  color: #667eea;
+  color: var(--color-primary);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: rgba(102, 126, 234, 0.1);
-  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.15);
+  border-color: var(--color-primary);
 }
 
 .btn-success {
-  background: linear-gradient(135deg, #68d391 0%, #38a169 100%);
+  background: linear-gradient(135deg, var(--color-success) 0%, #38a169 100%);
   color: white;
 }
 
@@ -64,7 +95,7 @@
 }
 
 .btn-danger {
-  background: linear-gradient(135deg, #f56565 0%, #c53030 100%);
+  background: linear-gradient(135deg, var(--color-error) 0%, #c53030 100%);
   color: white;
 }
 
@@ -75,12 +106,12 @@
 
 .btn-ghost {
   background: transparent;
-  color: #a0aec0;
+  color: var(--color-text-muted);
 }
 
 .btn-ghost:hover:not(:disabled) {
-  color: white;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-primary);
+  background: var(--color-bg-card);
 }
 
 /* Full width */
@@ -88,9 +119,15 @@
   width: 100%;
 }
 
-/* Spinner */
+/* Loading spinner */
 .btn-spinner {
-  animation: spin 1s linear infinite;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -101,33 +138,3 @@
     transform: rotate(360deg);
   }
 }
-/* style: adjust card padding on mobile - 1768340431 */
-/* style: update header gradient - 1768340433 */
-/* refactor: extract gas estimation - 1768340440 */
-/* fix: handle approval rejection - 1768340441 */
-/* feat: add rewards history - 1768340444 */
-/* fix: resolve timestamp display - 1768340444 */
-/* refactor: consolidate types - 1768340445 */
-/* style: improve table layout - 1768340445 */
-/* refactor: extract API calls - 1768340446 */
-/* feat: add sort functionality - 1768340446 */
-/* fix: resolve focus trap - 1768340448 */
-/* feat: add accessibility labels - 1768340448 */
-/* fix: handle search debounce - 1768340454 */
-/* fix: resolve filter combination - 1768340454 */
-/* feat: add collapsible sections - 1768340455 */
-/* fix: resolve accordion state - 1768340455 */
-/* feat: add reorder persistence - 1768340455 */
-/* style: update submenu design - 1768340457 */
-/* style: improve load indicator - 1768340458 */
-/* fix: handle zoom bounds - 1768340460 */
-/* feat: add stagger animations - 1768340462 */
-/* feat: add sticky headers - 1768340464 */
-/* fix: handle cache warmup - 1768340466 */
-/* style: update offline indicator - 1768340467 */
-/* feat: add file handling - 1768340470 */
-/* style: improve waveform display - 1768340472 */
-/* fix: resolve media permissions - 1768340472 */
-/* style: improve viewfinder - 1768340473 */
-/* style: improve model display - 1768340480 */
-/* style: update particle effects - 1768340481 */
