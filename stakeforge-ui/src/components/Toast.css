@@ -1,16 +1,18 @@
 .toast {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  transition: transform 0.3s, opacity 0.3s;
-  max-width: 400px;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: var(--z-toast);
+  transition: transform var(--transition-slow) cubic-bezier(0.16, 1, 0.3, 1), opacity var(--transition-slow);
+  max-width: 420px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
 }
 
 .toast.visible {
@@ -19,83 +21,92 @@
 }
 
 .toast.hidden {
-  transform: translateX(100%);
+  transform: translateX(120%);
   opacity: 0;
 }
 
 .toast-success {
-  background: linear-gradient(135deg, rgba(104, 211, 145, 0.9) 0%, rgba(56, 161, 105, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(104, 211, 145, 0.95) 0%, rgba(56, 161, 105, 0.95) 100%);
   color: white;
 }
 
 .toast-error {
-  background: linear-gradient(135deg, rgba(245, 101, 101, 0.9) 0%, rgba(197, 48, 48, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(245, 101, 101, 0.95) 0%, rgba(197, 48, 48, 0.95) 100%);
+  color: white;
+}
+
+.toast-warning {
+  background: linear-gradient(135deg, rgba(246, 173, 85, 0.95) 0%, rgba(221, 107, 32, 0.95) 100%);
   color: white;
 }
 
 .toast-info {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
   color: white;
 }
 
 .toast-icon {
-  font-size: 1.25rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .toast-message {
   flex: 1;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
 }
 
 .toast-close {
-  background: none;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
   border: none;
   color: white;
-  font-size: 1.5rem;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-  padding: 0;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
 }
 
 .toast-close:hover {
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform-origin: left;
+  animation: toast-progress linear forwards;
+}
+
+@keyframes toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
 }
 
 @media (max-width: 480px) {
   .toast {
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
     max-width: none;
   }
+  
+  .toast.hidden {
+    transform: translateY(120%);
+  }
 }
-/* fix: resolve wallet connection edge case - 1768340429 */
-/* style: improve NFT card hover effect - 1768340434 */
-/* fix: resolve modal close handler - 1768340437 */
-/* feat: add pending rewards animation - 1768340440 */
-/* style: improve responsive grid - 1768340440 */
-/* feat: add NFT metadata display - 1768340441 */
-/* feat: add APR calculation - 1768340443 */
-/* fix: resolve pagination issue - 1768340445 */
-/* fix: handle rate limiting - 1768340447 */
-/* feat: add keyboard shortcuts - 1768340447 */
-/* fix: handle right-click - 1768340457 */
-/* style: update overscan buffer - 1768340458 */
-/* refactor: optimize gestures - 1768340459 */
-/* fix: handle vibration API - 1768340459 */
-/* style: update zoom transitions - 1768340461 */
-/* fix: resolve deceleration - 1768340462 */
-/* fix: resolve timing offset - 1768340462 */
-/* style: improve depth layers - 1768340463 */
-/* fix: resolve sticky threshold - 1768340464 */
-/* refactor: optimize notification logic - 1768340468 */
-/* fix: handle route params - 1768340469 */
-/* fix: resolve text detection - 1768340474 */
-/* feat: add face detection - 1768340475 */
-/* refactor: optimize inference - 1768340477 */
-/* fix: handle bounding boxes - 1768340477 */
-/* fix: resolve mask edges - 1768340477 */
-/* feat: add depth estimation - 1768340478 */
-/* fix: resolve WebGL context - 1768340479 */
