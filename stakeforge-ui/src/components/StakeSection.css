@@ -1,152 +1,184 @@
 .stake-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .stake-panels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: var(--spacing-xl);
 }
 
 .stake-panel {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  padding: 1.5rem;
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
 }
 
 .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .panel-header h3 {
   margin: 0;
-  color: white;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .panel-actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .text-btn {
   background: none;
   border: none;
-  color: #667eea;
+  color: var(--color-primary);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
 }
 
 .text-btn:hover {
-  text-decoration: underline;
+  background: rgba(102, 126, 234, 0.1);
 }
 
 .nft-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 1rem;
-  max-height: 300px;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: var(--spacing-sm);
+  max-height: 280px;
   overflow-y: auto;
-  padding: 0.5rem;
+  padding: var(--spacing-xs);
+  flex: 1;
 }
 
 .nft-item {
   aspect-ratio: 1;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-bg-card);
   border: 2px solid transparent;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
   position: relative;
 }
 
 .nft-item:hover {
   border-color: rgba(102, 126, 234, 0.5);
   background: rgba(102, 126, 234, 0.1);
+  transform: scale(1.05);
 }
 
 .nft-item.selected {
-  border-color: #667eea;
+  border-color: var(--color-primary);
   background: rgba(102, 126, 234, 0.2);
 }
 
+.nft-item.selected::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(4px);
+}
+
 .nft-icon {
-  font-size: 1.5rem;
+  font-size: var(--font-size-xl);
 }
 
 .nft-id {
-  font-size: 0.75rem;
-  color: #a0aec0;
-  margin-top: 0.25rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
 }
 
 .check {
   position: absolute;
   top: 4px;
   right: 4px;
-  background: #667eea;
+  background: var(--color-primary);
   color: white;
   width: 18px;
   height: 18px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.625rem;
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  animation: pop-in 0.2s ease-out;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .empty-state {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 2rem;
-  color: #a0aec0;
+  padding: var(--spacing-2xl);
+  color: var(--color-text-muted);
 }
 
 .empty-state a {
-  color: #667eea;
+  color: var(--color-primary);
   display: block;
-  margin-top: 0.5rem;
+  margin-top: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .stake-actions {
-  margin-top: 1.5rem;
+  margin-top: var(--spacing-lg);
 }
 
 .action-btn {
   width: 100%;
-  padding: 1rem;
+  padding: var(--spacing-md);
   border: 2px solid rgba(102, 126, 234, 0.5);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   background: transparent;
-  color: #667eea;
-  font-size: 1rem;
-  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .action-btn:hover:not(:disabled) {
   background: rgba(102, 126, 234, 0.1);
+  border-color: var(--color-primary);
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   border: none;
   color: white;
 }
 
 .action-btn.primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .action-btn:disabled {
@@ -155,18 +187,20 @@
 }
 
 .claim-all-btn {
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
   border: none;
-  border-radius: 0.5rem;
-  background: linear-gradient(135deg, #68d391 0%, #38a169 100%);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-success) 0%, #38a169 100%);
   color: white;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .claim-all-btn:hover:not(:disabled) {
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(104, 211, 145, 0.4);
 }
 
 .claim-all-btn:disabled {
@@ -175,78 +209,103 @@
 }
 
 .staked-list {
-  max-height: 350px;
+  max-height: 320px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
 }
 
 .staked-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 0.75rem;
-  margin-bottom: 0.75rem;
+  padding: var(--spacing-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-fast);
+}
+
+.staked-item:hover {
+  border-color: var(--color-border-hover);
 }
 
 .staked-info {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 .staked-nft {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
 }
 
 .stake-details {
   display: flex;
-  gap: 1rem;
-  font-size: 0.875rem;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-sm);
 }
 
 .stake-date {
-  color: #a0aec0;
+  color: var(--color-text-muted);
 }
 
 .stake-rewards {
-  color: #68d391;
-  font-weight: 600;
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.stake-rewards::before {
+  content: '💎';
+  font-size: var(--font-size-xs);
 }
 
 .staked-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .small-btn {
-  padding: 0.5rem 0.75rem;
+  padding: var(--spacing-sm) var(--spacing-md);
   border: none;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .small-btn.claim {
-  background: rgba(104, 211, 145, 0.2);
-  color: #68d391;
+  background: rgba(104, 211, 145, 0.15);
+  color: var(--color-success);
+  border: 1px solid rgba(104, 211, 145, 0.3);
 }
 
 .small-btn.claim:hover:not(:disabled) {
-  background: rgba(104, 211, 145, 0.3);
+  background: rgba(104, 211, 145, 0.25);
+  border-color: var(--color-success);
 }
 
 .small-btn.unstake {
-  background: rgba(245, 101, 101, 0.2);
-  color: #f56565;
+  background: rgba(245, 101, 101, 0.15);
+  color: var(--color-error);
+  border: 1px solid rgba(245, 101, 101, 0.3);
 }
 
 .small-btn.unstake:hover:not(:disabled) {
-  background: rgba(245, 101, 101, 0.3);
+  background: rgba(245, 101, 101, 0.25);
+  border-color: var(--color-error);
 }
 
 .small-btn:disabled {
@@ -256,31 +315,25 @@
 
 .gas-notice {
   text-align: center;
-  font-size: 0.875rem;
-  color: #68d391;
-  margin-top: 2rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  margin-top: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
 }
 
 @media (max-width: 768px) {
   .stake-panels {
     grid-template-columns: 1fr;
   }
+  
+  .stake-panel {
+    padding: var(--spacing-md);
+  }
+  
+  .nft-grid {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  }
 }
-/* refactor: simplify useStaking hook - 1768340431 */
-/* feat: add claim all rewards button - 1768340434 */
-/* style: update input field styling - 1768340437 */
-/* fix: resolve approve state sync - 1768340439 */
-/* refactor: optimize imports - 1768340447 */
-/* refactor: simplify state logic - 1768340452 */
-/* feat: add search functionality - 1768340453 */
-/* feat: add recent searches - 1768340454 */
-/* refactor: extract selection logic - 1768340457 */
-/* feat: add custom actions - 1768340457 */
-/* feat: add long press menu - 1768340460 */
-/* style: update scroll shadows - 1768340462 */
-/* style: update entrance effects - 1768340463 */
-/* feat: add push notifications - 1768340468 */
-/* fix: handle paste events - 1768340470 */
-/* refactor: optimize recognition - 1768340474 */
-/* feat: add model loading - 1768340480 */
-/* style: update animation blending - 1768340480 */
