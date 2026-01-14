@@ -1,139 +1,181 @@
 .nft-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 1rem;
+  background: var(--gradient-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-md);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--spacing-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.nft-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
 }
 
 .nft-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(102, 126, 234, 0.4);
+}
+
+.nft-card:hover::after {
+  opacity: 0.05;
 }
 
 .nft-card.selected {
-  border-color: #667eea;
+  border-color: var(--color-primary);
   background: linear-gradient(145deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
 }
 
+.nft-card.selected::after {
+  opacity: 0.1;
+}
+
 .nft-card.staked {
-  border-color: rgba(104, 211, 145, 0.3);
+  border-color: rgba(104, 211, 145, 0.4);
 }
 
 .nft-card.staked:hover {
-  border-color: rgba(104, 211, 145, 0.5);
+  border-color: var(--color-success);
 }
 
 .nft-image {
   position: relative;
   aspect-ratio: 1;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
 .nft-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.nft-placeholder::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent 30%
+  );
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
 }
 
 .nft-card.staked .nft-placeholder {
-  background: linear-gradient(135deg, #68d391 0%, #38a169 100%);
+  background: linear-gradient(135deg, var(--color-success) 0%, #38a169 100%);
 }
 
 .nft-emoji {
-  font-size: 3rem;
+  font-size: var(--font-size-4xl);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .selection-badge {
   position: absolute;
   top: 8px;
   right: 8px;
-  width: 24px;
-  height: 24px;
-  background: #667eea;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-md);
+  animation: pop-in 0.2s ease-out;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .nft-info {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) 0;
 }
 
 .nft-id {
-  font-weight: 600;
-  color: white;
-  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
 }
 
 .stake-date {
-  font-size: 0.75rem;
-  color: #a0aec0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
 .rewards {
-  font-size: 0.875rem;
-  color: #68d391;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.rewards::before {
+  content: '💎';
+  font-size: var(--font-size-xs);
 }
 
 .nft-status {
   display: flex;
   justify-content: center;
+  margin-top: auto;
 }
 
 .status-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .status-badge.available {
-  background: rgba(102, 126, 234, 0.2);
-  color: #667eea;
+  background: rgba(102, 126, 234, 0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(102, 126, 234, 0.3);
 }
 
 .status-badge.staked {
-  background: rgba(104, 211, 145, 0.2);
-  color: #68d391;
+  background: rgba(104, 211, 145, 0.15);
+  color: var(--color-success);
+  border: 1px solid rgba(104, 211, 145, 0.3);
 }
-/* style: update primary button colors - 1768340429 */
-/* feat: add stake confirmation modal - 1768340430 */
-/* fix: resolve approval flow bug - 1768340435 */
-/* feat: add staking stats section - 1768340439 */
-/* fix: handle disconnect properly - 1768340439 */
-/* style: improve error message display - 1768340440 */
-/* fix: resolve dropdown position - 1768340453 */
-/* style: improve search results - 1768340454 */
-/* style: update chip design - 1768340454 */
-/* feat: add context menu - 1768340457 */
-/* feat: add virtual scrolling - 1768340458 */
-/* style: improve bounce effect - 1768340462 */
-/* refactor: extract sticky logic - 1768340464 */
-/* refactor: extract cache strategy - 1768340467 */
-/* feat: add background sync - 1768340467 */
-/* style: update share sheet - 1768340469 */
-/* style: update video controls - 1768340471 */
-/* refactor: optimize media handling - 1768340473 */
-/* style: improve skeleton overlay - 1768340476 */
-/* fix: resolve gesture confidence - 1768340476 */
-/* style: improve depth visualization - 1768340478 */
-/* feat: add 3D rendering - 1768340479 */
-/* feat: add physics simulation - 1768340481 */
-/* fix: resolve capture stream - 1768340482 */
