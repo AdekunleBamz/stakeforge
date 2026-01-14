@@ -1,0 +1,60 @@
+.gas-estimate {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.gas-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gas-icon {
+  font-size: var(--font-size-base);
+}
+
+.gas-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.gas-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.gas-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+}
+
+.gas-row.total {
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-xs);
+  border-top: 1px dashed var(--color-border);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.usd-value {
+  color: var(--color-text-disabled);
+  margin-left: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+}
+
+.gas-note {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-info);
+  font-size: var(--font-size-xs);
+}
