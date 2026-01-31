@@ -87,9 +87,7 @@ All transactions are configured for Base's ultra-low gas:
 ```
 stakeforge/
 ├── contracts/           # Solidity smart contracts
-├── scripts/            # Deployment scripts
 ├── test/               # Contract tests
-├── functions/          # Interaction scripts
 └── stakeforge-ui/      # React frontend
     ├── src/
     │   ├── abi/        # Contract ABIs

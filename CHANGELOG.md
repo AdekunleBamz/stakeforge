@@ -62,16 +62,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Type definitions for all entities
 - Application constants
 
-#### Functions (Scripts)
-- `1-generate-wallets.cjs` - Generate test wallets
-- `2-fund-wallets.cjs` - Fund wallets with ETH
-- `3-interact-contracts.cjs` - Contract interaction helpers
-- `4-organic-interactions.cjs` - Simulate organic activity
-- `5-check-balances.cjs` - Check wallet balances
-- `6-collect-eth.cjs` - Collect ETH to target wallet
-- `7-audit-staking.cjs` - Audit staked NFTs
-- `8-gas-monitor.cjs` - Monitor Base gas prices
-
 #### Tests
 - Unit tests for ForgeNFT
 - Unit tests for ForgeToken

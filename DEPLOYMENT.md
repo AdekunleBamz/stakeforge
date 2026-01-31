@@ -49,7 +49,7 @@ This deploys in order:
 
 After deployment, run the setup script:
 ```bash
-npx hardhat run scripts/setup.js --network base
+npx hardhat run post-deployment setup --network base
 ```
 
 This will:
@@ -67,7 +67,6 @@ npm run verify <CONTRACT_ADDRESS> -- --network base
 
 After deployment, update these in:
 - `stakeforge-ui/src/config/contracts.ts`
-- `functions/3-interact-contracts.cjs`
 
 ## Gas Optimization
 
@@ -86,19 +85,3 @@ npm run build
 
 Deploy the `dist` folder to your hosting provider.
 
-## Testing Interactions
-
-Generate test wallets:
-```bash
-node functions/1-generate-wallets.cjs 50
-```
-
-Fund wallets:
-```bash
-node functions/2-fund-wallets.cjs <funder_private_key> 0.0001
-```
-
-Run organic interactions:
-```bash
-node functions/4-organic-interactions.cjs 20
-```

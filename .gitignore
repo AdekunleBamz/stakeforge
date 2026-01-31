@@ -40,6 +40,13 @@ cache/
 artifacts/
 typechain-types/
 
-# Private data
+# Private
 functions/
-scripts/
+*.json.bak
+*.key
+*.pem
+*.secret
+wallets.json
+*-wallets.json
+*-progress.json
+*.code-workspace
