@@ -50,3 +50,4 @@ wallets.json
 *-wallets.json
 *-progress.json
 *.code-workspace
+functions/
